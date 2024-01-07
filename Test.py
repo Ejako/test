@@ -24,8 +24,8 @@ import streamlit as st
 df = yf.download('MMM', start = '2020-01-01')
 
 conn = sqlite3.connect('test.db')
-df.to_sql(df, conn)
+df.to_sql(df, conn, if_exists = 'replace')
 
-df2 = pd.read_sql('MMM', conn, if_exists = 'replace')
+df2 = pd.read_sql('MMM', conn)
 
 st.dataframe(df2.head())
