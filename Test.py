@@ -25,6 +25,6 @@ df = yf.download('MMM', start = '2020-01-01')
 
 df.to_sql(df, engine)
 
-df2 = pd.read_sql('MMM', engine)
+df2 = pd.read_sql('MMM', engine, if_exists = 'replace')
 
 st.dataframe(df2.head())
