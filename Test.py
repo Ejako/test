@@ -19,7 +19,7 @@ import yfinance as yf
 ## UI
 import streamlit as st
 
-engine = create_engine('sqlite:///Test.db')
+engine = create_engine('sqlite:///test.db')
 
 df = yf.download('MMM', start = '2020-01-01')
 
