@@ -37,7 +37,7 @@ def update_sql(df, ticker):
 def retrieve_df(ticker):
     conn = sqlite3.connect('test.db')
     
-    df = pd.read(f'SELECT * FROM "{ticker}"', conn)
+    df = pd.read_sql(f'SELECT * FROM "{ticker}"', conn)
     
     conn.close()
     
