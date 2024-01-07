@@ -47,7 +47,7 @@ stock = yf.Ticker('JNJ')
 df = stock.history('JNJ', start = '2020-01-01')
 df.reset_index(inplace=True)
 
-update_sql(df)
+update_sql(df, 'JNJ')
 
 df2 = retrieve_df('JNJ')
 
