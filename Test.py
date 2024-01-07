@@ -9,6 +9,7 @@ Created on Sun Jan  7 14:34:31 2024
 import pandas as pd
 import numpy as np
 import statistics
+import sqlite3
 
 ## SQL
 from sqlalchemy import create_engine
@@ -19,12 +20,12 @@ import yfinance as yf
 ## UI
 import streamlit as st
 
-engine = create_engine('sqlite:///test.db')
 
 df = yf.download('MMM', start = '2020-01-01')
 
-df.to_sql(df, engine)
+conn = sqlite3.connect('test.db')
+df.to_sql(df, conn)
 
-df2 = pd.read_sql('MMM', engine, if_exists = 'replace')
+df2 = pd.read_sql('MMM', conn, if_exists = 'replace')
 
 st.dataframe(df2.head())
